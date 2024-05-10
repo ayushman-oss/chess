@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://unpkg.com/chessboardjs@1.0.0/dist/chessboard.css">
     <style>
         body { font-family: Arial, sans-serif; }
-        #board { width: 400px; }
+        #board { width: 400px; margin: 20px auto; }
     </style>
 </head>
 <body>
@@ -15,47 +15,48 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/1.0.0/chess.js"></script>
     <script src="https://unpkg.com/chessboardjs@1.0.0/dist/chessboard.js"></script>
-    <script>document.addEventListener('DOMContentLoaded', () => {
-    const board = Chessboard('board', {
-        draggable: true,
-        position: 'start',
-        onDrop: handleMove
-    });
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const board = Chessboard('board', {
+                draggable: true,
+                position: 'start',
+                onDrop: handleMove
+            });
 
-    const game = new Chess();
+            const game = new Chess();
 
-    function handleMove(source, target, piece, newPos, oldPos, orientation) {
-        // Validate the move
-        const move = game.move({
-            from: source,
-            to: target,
-            promotion: 'q' // default to queen promotion
+            function handleMove(source, target, piece, newPos, oldPos, orientation) {
+                // Validate the move
+                const move = game.move({
+                    from: source,
+                    to: target,
+                    promotion: 'q' // default to queen promotion
+                });
+
+                if (move === null) return 'snapback'; // illegal move
+
+                // Make computer move after player's move
+                window.setTimeout(makeComputerMove, 250);
+            }
+
+            function makeComputerMove() {
+                const moves = game.moves();
+                if (moves.length === 0 || game.in_draw() || game.in_stalemate() || game.in_threefold_repetition()) {
+                    alert('Game over! You win.');
+                    return;
+                }
+
+                // Pick a random move
+                const randomMove = moves[Math.floor(Math.random() * moves.length)];
+                game.move(randomMove);
+                board.position(game.fen());
+
+                // Check for game over
+                if (game.game_over()) {
+                    alert('Game over! You lose.');
+                }
+            }
         });
-
-        if (move === null) return 'snapback'; // illegal move
-
-        // Make computer move after player's move
-        window.setTimeout(makeComputerMove, 250);
-    }
-
-    function makeComputerMove() {
-        const moves = game.moves();
-        if (moves.length === 0) {
-            alert('Game over! You win.');
-            return;
-        }
-
-        // Pick a random move
-        const randomMove = moves[Math.floor(Math.random() * moves.length)];
-        game.move(randomMove);
-        board.position(game.fen());
-        
-        // Check for game over
-        if (game.game_over()) {
-            alert('Game over! You lose.');
-        }
-    }
-});
-</script>
+    </script>
 </body>
 </html>
