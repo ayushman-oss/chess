@@ -4,6 +4,12 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
 }
+.container {
+        align-items: center;
+        column-gap: 10vh; 
+        background-color: #11111100; /* Dark background */
+        margin-bottom: 0px; /* Remove default margin */
+    }
 
 /* chess board styling */
 #gameboard {
@@ -13,6 +19,27 @@ body {
     height: max-content;
     
 }
+.icon{
+        height: 2.5vh;
+        width: 2.5vh;
+        
+        position: absolute;
+        bottom: 1%;
+        fill:beige;
+        z-index: 14;
+        right: 1%;
+        background-color: #3c5a4780;
+        border-radius: 20%;
+    }
+
+#canvas {
+        position: absolute; /* Set canvas position to absolute */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1; /* Set a higher z-index to ensure it's on top of other elements */
+    }
 
 #spacer {
     padding: 2vh 2vh 0 0;
@@ -22,6 +49,16 @@ body {
     background-color: #E1C16E;
     
 }
+.heading {
+      font-size: 2.5vh;
+      position: absolute;
+      top: 10%;
+      right: 0px;
+      transform: translateY(0%) translateX(40%) rotate(-90deg);
+      color: beige; /* Initial color */
+      transition: color 1s ease; 
+      background-color: #111;}
+	        
 
 .field {
     width: 10vh;
@@ -33,47 +70,57 @@ body {
 .dark {
     background-color: limegreen;
     display: absolute;
+    z-index: 4;
 }
 
 .light {
     background-color: beige;
     display: absolute;
+    z-index: 4;
 }
 
 .piece {
-    z-index: 5;
+    z-index: 4;
 }
 
 .row8 {
     grid-row: 1;
+    z-index: 4;
 }
 
 .row7 {
     grid-row: 2;
+    z-index: 4;
 }
 
 .row6 {
     grid-row: 3;
+    z-index: 4;
 }
 
 .row5 {
     grid-row: 4;
+    z-index: 4;
 }
 
 .row4 {
     grid-row: 5;
+    z-index: 4;
 }
 
 .row3 {
     grid-row: 6;
+    z-index: 4;
 }
 
 .row2 {
     grid-row: 7;
+    z-index: 4;
 }
 
 .row1 {
     grid-row: 8;
+    z-index: 4;
 }
 
 .notationRow {
@@ -83,34 +130,42 @@ body {
 
 .colA {
     grid-column: 2;
+    z-index: 4;
 }
 
 .colB {
     grid-column: 3;
+    z-index: 4;
 }
 
 .colC {
     grid-column: 4;
+    z-index: 4;
 }
 
 .colD {
     grid-column: 5;
+    z-index: 4;
 }
 
 .colE {
     grid-column: 6;
+    z-index: 4;
 }
 
 .colF {
     grid-column: 7;
+    z-index: 4;
 }
 
 .colG {
     grid-column: 8;
+    z-index: 4;
 }
 
 .colH {
     grid-column: 9;
+    z-index: 4;
 }
 
 .notationCol {
@@ -150,26 +205,32 @@ p {
     height: 100vh;
     grid-template-columns: 20% 80%;
     grid-template-rows: auto;
+    z-index:3;
 }
 #perfColumn{
     max-height: 20%;
+
+
 }
 #boardColumn{
     max-height: 100%;
+    z-index: 4;
 }
 
 .turnIndicatorContainer {
     padding: 2vh;
     text-align: left;
-    width: 20vh;
+    width: 20vw;
     height: 100vh;
     margin-bottom: 10px;
     background-color: rgba(0, 0, 0, 0);
     border-radius: 6px;
     position: fixed;
+    z-index: 4;
 }
 .board{
     height: 100vh;
+    z-index: 4;
 
 }
 
@@ -203,6 +264,7 @@ button:hover {
 img {
     width: 10vh;
     height: 10vh;
+    z-index: 2;
 }
 
 @media only screen and (max-width: 100vh) {
@@ -221,14 +283,7 @@ img {
 
     }
 
-    #boardColumn {
-        
-    }
 
-    #prefColumn {
-        
-        
-    }
 
     img {
         width: calc(100vw / 9);
@@ -242,9 +297,11 @@ img {
 
     .notationCol {
         line-height: calc(100vw / 9);
+        z-index: 8;
     }
 
     .notationRow {
+        z-index: 8;
         line-height: calc(100vh / 18);
     }
 
@@ -253,6 +310,7 @@ img {
         position: fixed;
         margin-top: 50%;
         bottom: 0px;
+        z-index: 4;
         }
 
     #spacer {
@@ -268,6 +326,7 @@ img {
     .marker {
         line-height: calc(100vw / 9);
         font-size: 70px;
+        z-index: 10;
     }
 
     button {
