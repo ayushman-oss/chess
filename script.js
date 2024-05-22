@@ -130,7 +130,7 @@ function movePiece(newField) {
         if(getPieceType(pieceOnFocus.id) == "wp" && newField.id.startsWith("8")) {
             
             pieceOnFocus.id = "wq" + whitePawnSwapCounter;
-            pieceOnFocus.src = "assets/Chess_qlt60.png";
+            pieceOnFocus.src = "assets/white_queen";
 
             // increase pawn swap counter to avoid same ids
             whitePawnSwapCounter = whitePawnSwapCounter + "I";
@@ -138,7 +138,7 @@ function movePiece(newField) {
         } else if(getPieceType(pieceOnFocus.id) == "bp" && newField.id.startsWith("1")) {
 
             pieceOnFocus.id = "bq" + blackPawnSwapCounter;
-            pieceOnFocus.src = "assets/Chess_qdt60.png";
+            pieceOnFocus.src = "assets/black_queen";
 
             // increase pawn swap counter to avoid same ids
             blackPawnSwapCounter = blackPawnSwapCounter + "I";
